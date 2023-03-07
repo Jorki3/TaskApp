@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Tasks;
 
+use App\Models\Task as ModelsTask;
 use Livewire\Component;
 
 class Task extends Component
@@ -13,6 +14,12 @@ class Task extends Component
     protected $listeners = [
         'showFormTask' => 'hideForm'
     ];
+
+    public function delete()
+    {
+        ModelsTask::find($this->task->id)->delete();
+        $this->emit('readTasks');
+    }
 
     public function hideForm()
     {
