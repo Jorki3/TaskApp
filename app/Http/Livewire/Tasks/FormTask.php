@@ -42,8 +42,7 @@ class FormTask extends Component
             'status' => 0,
         ]);
 
-        //Todo: Leer tareas
-        // $self->emit('readTasks');
+        $self->emit('readTasks');
         $self->emit('showFormAddTask');
     }
 
