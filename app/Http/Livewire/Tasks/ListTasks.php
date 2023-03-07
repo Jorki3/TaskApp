@@ -9,9 +9,16 @@ class ListTasks extends Component
 {
     public $project;
 
+    public $readyToLoad = false;
+
     protected $listeners = [
         'readTasks' => 'read'
     ];
+
+    public function loadTasks()
+    {
+        $this->readyToLoad = true;
+    }
 
     public function read()
     {
@@ -22,7 +29,7 @@ class ListTasks extends Component
     public function render()
     {
         return view('livewire.tasks.list-tasks', [
-            'tasks' => $this->read()
+            'tasks' => $this->readyToLoad ? $this->read() : []
         ]);
     }
 }

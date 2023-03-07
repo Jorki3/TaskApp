@@ -30,8 +30,8 @@
             </div>
 
             <div>
-                <p class="flex">
-                    @if ($task->status === 0)
+                <button  class="flex hover:cursor-pointer" wire:click='changeStatus'>
+                    @if ($task->status == 0)
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -46,7 +46,7 @@
                         </svg>
                         <span>Completo</span>
                     @endif
-                </p>
+                </button>
 
                 <p class="flex">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

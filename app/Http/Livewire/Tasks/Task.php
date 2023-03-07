@@ -4,16 +4,22 @@ namespace App\Http\Livewire\Tasks;
 
 use App\Models\Task as ModelsTask;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Task extends Component
 {
     public $task;
     public $showForm = false;
-    public $priorityColor;
 
     protected $listeners = [
         'showFormTask' => 'hideForm'
     ];
+
+    public function changeStatus()
+    {
+        ModelsTask::find($this->task->id)->update(['status' => !$this->task->status]);
+        $this->emit('readTasks');
+    }
 
     public function delete()
     {

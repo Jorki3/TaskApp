@@ -20,14 +20,14 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
+    <div class="h-screen bg-gray-100">
         <div class="flex flex-wrap">
             <div class="w-1/4">
                 @livewire('sidebar')
             </div>
 
             <div class="w-3/4">
-                <main>
+                <main class="mx-auto">
                     {{ $slot }}
                 </main>
             </div>
