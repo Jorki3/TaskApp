@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Projects;
 
+use App\Models\Project;
 use Livewire\Component;
 
 class InfoProject extends Component
@@ -12,6 +13,17 @@ class InfoProject extends Component
     protected $listeners = [
         'hideUpdateProject' => 'showForm'
     ];
+
+    public function delete()
+    {
+        $project = $this->project->id;
+
+        // Todo: Eliminar tareas
+        // Task::where('project', $project)->delete();
+        Project::find($project)->delete();
+
+        return redirect('taskapp');
+    }
 
     public function showForm()
     {
