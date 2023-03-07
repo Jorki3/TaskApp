@@ -1,3 +1,3 @@
 <x-task-layout>
-    Hola
+    @livewire('projects.project')
 </x-task-layout>
