@@ -24,8 +24,7 @@ class FormProject extends Component
             'description' => $self->description,
         ]);
 
-        // Todo: Leer proyectos
-        // Todo: Ocultar formulario
+        $self->emit('readProjects');
         $self->emit('hideRegisterProject');
     }
 
