@@ -15,6 +15,13 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('project')->constrained('projects');
+            $table->string('task');
+            $table->string('description');
+            $table->date('start')->nullable();
+            $table->date('end')->nullable();
+            $table->enum('priority', ['Alta', 'Medio', 'Bajo']);
+            $table->boolean('status');
             $table->timestamps();
         });
     }
