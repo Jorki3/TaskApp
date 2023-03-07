@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Projects;
 
 use App\Models\Project;
+use App\Models\Task;
 use Livewire\Component;
 
 class InfoProject extends Component
@@ -18,8 +19,7 @@ class InfoProject extends Component
     {
         $project = $this->project->id;
 
-        // Todo: Eliminar tareas
-        // Task::where('project', $project)->delete();
+        Task::where('project', $project)->delete();
         Project::find($project)->delete();
 
         return redirect('taskapp');
