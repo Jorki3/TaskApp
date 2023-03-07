@@ -29,23 +29,35 @@
                 </p>
             </div>
 
-            <p class="flex">
-                @if ($task->status === 0)
+            <div>
+                <p class="flex">
+                    @if ($task->status === 0)
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>Incompleto</span>
+                    @else
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6 text-green-500">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>Completo</span>
+                    @endif
+                </p>
+
+                <p class="flex">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6">
+                        stroke="currentColor"
+                        class="w-6 h-6 {{ $task->priority == 'Alta' ? 'text-red-500' : ($task->priority == 'Medio' ? 'text-yellow-500' : 'text-blue-500') }}">
                         <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                     </svg>
-                    <span>Incompleto</span>
-                @else
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6 text-green-500">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>Completo</span>
-                @endif
-            </p>
+                    <span>{{ $task->priority }}</span>
+                </p>
+            </div>
 
             <p class="flex">
                 <button class="hover:text-yellow-500" wire:click="showForm">
@@ -66,4 +78,8 @@
             </p>
         </div>
     </div>
+
+    @if ($showForm)
+        @livewire('tasks.form-task')
+    @endif
 </div>
